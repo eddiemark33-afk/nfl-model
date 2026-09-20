@@ -60,9 +60,14 @@ def main():
     print(f"\n{CURRENT_SEASON} week {week} card   (beta {beta:.1f}, hfa {hfa:.2f}, "
           f"blend: {blend.params['model_spread']:.2f} model + {blend.params['spread_line']:.2f} market)\n")
     show = ["away", "home", "market_home_line", "model_home_margin", "blend_home_margin",
-            "edge_blend", "p_home_cover", "p_home_win", "pick", "stake_pct_bankroll", "fade_candidate"]
+            "edge_blend", "p_home_cover", "pick", "stake_pct_bankroll", "fade_candidate"]
+    print("--- SPREAD ---")
     print(card[show].to_string(index=False))
-    print(f"\npicks flagged: {(card['pick'] != '').sum()}   fade candidates: {(card['fade_candidate'] != '').sum()}")
+    show_ml = ["away", "home", "home_ml", "away_ml", "book_p_home_win", "p_home_win",
+               "ml_pick", "ml_edge", "ml_stake_pct_bankroll"]
+    print("\n--- MONEYLINE ---")
+    print(card[show_ml].to_string(index=False))
+    print(f"\nspread picks: {(card['pick'] != '').sum()}   moneyline picks: {(card['ml_pick'] != '').sum()}   fade candidates: {(card['fade_candidate'] != '').sum()}")
     print(f"saved: {out_path}")
     print("DONE")
 

@@ -21,6 +21,7 @@ SCHED_COLS = [
     "game_id", "season", "game_type", "week", "gameday",
     "home_team", "away_team", "home_score", "away_score",
     "result", "spread_line", "total_line",
+    "home_moneyline", "away_moneyline",
 ]
 
 
