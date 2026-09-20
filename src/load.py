@@ -3,6 +3,14 @@
 import nflreadpy as nfl
 import pandas as pd
 
+from pathlib import Path
+
+# Cache nflverse downloads on disk in data/raw so each season is fetched once.
+nfl.config.update_config(
+    cache_mode="filesystem",
+    cache_dir=Path(__file__).resolve().parent.parent / "data" / "raw",
+)
+
 PLAY_COLS = [
     "game_id", "season", "week", "season_type",
     "posteam", "defteam", "home_team", "away_team",
